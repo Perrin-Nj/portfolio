@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Perrin Njietche</title>
+    <meta name="description" content="Perrin Njietche - Software Engineer & Business Analyst. Specialized in Spring Boot, Camunda 8, Kubernetes, and backend architecture." />
+    <title>Perrin Njietche - Software Engineer & Business Analyst</title>
 
     <!-- bootstrap css cdn link  -->
     <link
@@ -17,11 +18,12 @@
     <!-- custom css file -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- google font link -->
+    <!-- google font link with preload hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -31,155 +33,224 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
     />
 
-    <!-- for adding animation to website we have use AOS library 
-    AOS Library css file cdn link -->
+    <!-- AOS Library css file cdn link -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Resource hints for performance -->
+    <link rel="preload" as="script" href="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" />
+    <link rel="preload" as="script" href="https://unpkg.com/aos@next/dist/aos.js" />
+    <link rel="preload" as="style" href="css/style.css" />
 
     <!-- jquery cdn link  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head>
   <body>
     <!-- navbar starts -->
-    <nav
-      id="navbar-top"
-      class="navbar navbar-expand-lg navbar-light bg-white sticky-top"
-    >
-      <div class="container-fluid px-5">
-        <a class="navbar-brand fw-bold fs-2" href="#" style="color: #3f396d"
-          >Portfolio</a
-        >
-        <button
-          class="nav-menu d-md-none"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <i class="bi bi-menu-button-fill"></i>
+    <!-- Modern Navbar -->
+    <nav id="navbar-top" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-modern">
+      <div class="container-fluid px-4 px-md-5">
+        <a class="navbar-brand fw-bold fs-4" href="#" style="color: #00d4ff; font-family: 'Fira Code', monospace;">
+          <i class="bi bi-code-square me-2"></i>Perrin.dev
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse justify-content-center"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav gap-4" style="font-size: 1.1rem">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#service">Service</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#testimonial">Testimonials</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#blog">Blog</a>
-            </li>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav gap-3 gap-md-4">
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#expertise">Expertise</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#blog">Articles</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#certifications">Certifications</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-animated" href="#contact">Contact</a></li>
           </ul>
         </div>
-        <button class="c-btn ms-4 py-2 px-4 rounded-pill d-none d-md-block">Contact</button>
+        <a href="#contact" class="btn-cta d-none d-md-inline-block ms-3">Get In Touch</a>
       </div>
     </nav>
-    <!-- navbar ends here -->
 
-    <!-- home section starts  -->
-    <section class="home pt-5 pb-5" id="home">
-      <div class="row justify-content-evenly align-middle">
-        <!-- here data-aos is used for adding aos animation  -->
-        <div class="col-10 col-md-6 text-center text-md-start" data-aos="slide-right">
-          <h2 style="color: #3f396d">
-            Hello! I Am <br /><span class="c-orange">Perrin Njietche</span>
-          </h2>
-          <p class="text-muted">
-            I'm A Web Developer having 5 years of experience in expertise of
-            creating website with fully responsive Also with backend part too.
-          </p>
-          <button class="c-btn h-btn mt-3 py-3 px-5 rounded-pill">
-            Hire Me
-          </button>
-          <a href="" class="link ms-4 d-none">See My Work</a>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="container-fluid">
+        <div class="row align-items-center min-vh-100">
+          <div class="col-lg-6 col-12 text-center text-lg-start px-4 px-md-5" data-aos="fade-up" data-aos-delay="0">
+            <div class="hero-content">
+              <span class="badge-hero">Welcome to my portfolio</span>
+              <h1 class="hero-title mt-4 mb-4">
+                Hi, I'm <span class="gradient-text">Perrin Njietche</span>
+              </h1>
+              <h2 class="hero-subtitle mb-4">Software Engineer & Business Analyst</h2>
+              <p class="hero-description text-muted mb-5">
+                Specialized in backend architecture with <span class="highlight">Spring Boot</span>,
+                <span class="highlight">Camunda 8</span>, and <span class="highlight">Kubernetes</span>.
+                4+ years building scalable microservices, leading teams, and driving innovation across banking,
+                e-learning, and fintech domains.
+              </p>
+              <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary btn-lg btn-glow me-3">Start a Project</a>
+                <a href="PERRIN-NJIETCHE-Resume.pdf" download class="btn btn-outline-light btn-lg">Download Resume</a>
+              </div>
+              <div class="hero-stats mt-5 pt-4 border-top border-secondary">
+                <div class="row">
+                  <div class="col-md-4">
+                    <h3 class="stat-number">4+</h3>
+                    <p class="stat-label">Years Experience</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h3 class="stat-number">15+</h3>
+                    <p class="stat-label">Projects Delivered</p>
+                  </div>
+                  <div class="col-md-4">
+                    <h3 class="stat-number">100%</h3>
+                    <p class="stat-label">Client Satisfaction</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12 d-none d-lg-flex justify-content-center align-items-center px-4 px-md-5" data-aos="fade-left" data-aos-delay="200">
+            <div class="hero-image-container">
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                </div>
+                <pre><code class="code-content">{
+  "name": "Perrin Njietche",
+  "role": "Software Engineer",
+  "expertise": [
+    "Spring Boot",
+    "Camunda 8",
+    "Kubernetes",
+    "microservices",
+    "backend-architecture"
+  ],
+  "passion": "Building robust systems"
+}</code></pre>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-10 col-md-4 d-none d-md-block">
-          <img src="images/banner-01.png" class="img-fluid" alt="" />
+      </div>
+      <div class="scroll-indicator">
+        <svg class="mouse" width="26" height="40" viewBox="0 0 26 40">
+          <path d="M13 0C6.925 0 2 4.925 2 11v18c0 6.075 4.925 11 11 11s11-4.925 11-11V11C24 4.925 19.075 0 13 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="13" cy="12" r="1.5" fill="currentColor" class="dot" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise-section py-5" id="expertise">
+      <div class="container-fluid px-4 px-md-5">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+          <span class="section-label">Core Competencies</span>
+          <h2 class="section-title">Technical Expertise & Technologies</h2>
+        </div>
+
+        <div class="row g-4">
+          <!-- Backend Development -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <h4>Backend Development</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">Java</span>
+                <span class="tech-badge">Spring Boot</span>
+                <span class="tech-badge">Spring Security</span>
+                <span class="tech-badge">GraphQL</span>
+                <span class="tech-badge">REST APIs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Process Orchestration -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="bi bi-diagram-3"></i>
+              </div>
+              <h4>Process Orchestration</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">Camunda 8</span>
+                <span class="tech-badge">Zeebe</span>
+                <span class="tech-badge">BPMN 2.0</span>
+                <span class="tech-badge">Workflow Automation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DevOps & Infrastructure -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="bi bi-cloud"></i>
+              </div>
+              <h4>DevOps & Cloud</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">Kubernetes</span>
+                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">CI/CD</span>
+                <span class="tech-badge">Azure</span>
+                <span class="tech-badge">Grafana</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security & Auth -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="bi bi-shield-lock"></i>
+              </div>
+              <h4>Security & Authentication</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">OAuth2</span>
+                <span class="tech-badge">Keycloak</span>
+                <span class="tech-badge">Kong Gateway</span>
+                <span class="tech-badge">RBAC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases & Data -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="bi bi-database"></i>
+              </div>
+              <h4>Data Management</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">Liquibase</span>
+                <span class="tech-badge">Talend OS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile & Frontend -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="bi bi-phone"></i>
+              </div>
+              <h4>Mobile & Frontend</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">Flutter</span>
+                <span class="tech-badge">Firebase</span>
+                <span class="tech-badge">HTML/CSS</span>
+                <span class="tech-badge">JavaScript</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <!-- home section ends here -->
-
-    <!-- expertise section starts -->
-    <section class="expertise mt-5" id="service">
-      <div class="heading text-center">
-        <small>My Expertise</small>
-        <h3>
-          Provide Wide Range of <br />
-          Digital Services
-        </h3>
-      </div>
-      <div class="row justify-content-evenly mt-5">
-        <div class="col-10 col-md-4" data-aos="fade-up">
-          <div class="service-card">
-            <div class="img">
-              <img
-                src="images/service-icon1.png"
-                class="w-25 img-fluid img"
-                alt=""
-              />
-            </div>
-            <div class="content mt-3">
-              <h4>Web Design</h4>
-              <p class="text-muted">
-                Dolor repellendus temporibus autem quibusdam officiis debitis
-                rerum neces aibus minima veniam.
-              </p>
-              <a href="" class="link">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-10" data-aos="fade-up">
-          <div class="service-card">
-            <div class="img">
-              <img
-                src="images/service-icon2.png"
-                class="w-25 img-fluid img"
-                alt=""
-              />
-            </div>
-            <div class="content mt-3">
-              <h4>Web Development</h4>
-              <p class="text-muted">
-                Dolor repellendus temporibus autem quibusdam officiis debitis
-                rerum neces aibus minima veniam.
-              </p>
-              <a href="" class="link">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-10" data-aos="fade-up">
-          <div class="service-card">
-            <div class="img">
-              <img
-                src="images/service-icon3.png"
-                class="w-25 img-fluid img"
-                alt=""
-              />
-            </div>
-            <div class="content mt-3">
-              <h4>Debugging</h4>
-              <p class="text-muted">
-                Dolor repellendus temporibus autem quibusdam officiis debitis
-                rerum neces aibus minima veniam.
-              </p>
-              <a href="" class="link">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- expertise section ends here -->
 
     <!-- skill section starts -->
     <section class="skill mt-5 py-5" id="about">
@@ -255,201 +326,293 @@
     <!-- skill section end here -->
 
     <!-- portfolio section starts here -->
-    <section class="portfolio" id="portfolio">
-      <div class="heading text-center pt-5">
-        <small>Creative Work</small>
-        <h3>Check My Portfolio</h3>
-      </div>
-
-      <div id="myBtnContainer" class="text-center mt-4">
-        <!-- here we will create custom attribute using data- for filtering -->
-        <button class="filter-item" data-filter="all">All</button>
-        <button class="filter-item" data-filter="game">Game</button>
-        <button class="filter-item" data-filter="webapp">Web App</button>
-        <button class="filter-item" data-filter="website">Website</button>
-        <button class="filter-item" data-filter="brand">Brand</button>
-      </div>
-      <div class="portfolio-body">
-        <div class="row justify-content-evenly px-4">
-          <div class="post col-md-4 game all col-10 mt-3 mt-md-0" data-aos="fade-up">
-            <div class="card">
-              <img src="images/2048game.png" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h4 class="card-title">2048 Game</h4>
-                <span class="badge bg-secondary badge-pill">HTML&CSS</span>
-                <span class="badge bg-secondary badge-pill">JavaScript</span>
-                <span class="badge bg-secondary badge-pill mb-2">Game</span
-                ><br />
-                <a href="#" class="link">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="post col-md-4 website all col-10 mt-3 mt-md-0" data-aos="fade-up">
-            <div class="card">
-              <img
-                src="images/currency-converter.png"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body text-center">
-                <h4 class="card-title">Converter App</h4>
-                <span class="badge bg-secondary badge-pill">HTML&CSS</span>
-                <span class="badge bg-secondary badge-pill">JavaScript</span>
-                <span class="badge bg-secondary badge-pill mb-2">Website</span
-                ><br />
-                <a href="#" class="read-more-btn link">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="post col-md-4 webapp all col-10 mt-3 mt-md-0" data-aos="fade-up">
-            <div class="card">
-              <img src="images/dictionary.png" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h4 class="card-title">Dictionary</h4>
-                <span class="badge bg-secondary badge-pill">HTML&CSS</span>
-                <span class="badge bg-secondary badge-pill">JavaScript</span>
-                <span class="badge bg-secondary badge-pill mb-2">WebApp</span
-                ><br />
-                <a href="#" class="read-more-btn link">Read More</a>
-              </div>
-            </div>
-          </div>
+    <section class="portfolio" id="projects">
+      <div class="container-fluid px-4 px-md-5">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+          <span class="section-label">Notable Work</span>
+          <h2 class="section-title">Featured Projects</h2>
         </div>
-        <div class="row justify-content-evenly mt-4 px-4">
-          <div class="post col-md-4 game all col-10 mt-3 mt-md-0" data-aos="fade-up">
-            <div class="card">
-              <img src="images/piceditor.png" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h4 class="card-title">PicEditor App</h4>
-                <span class="badge bg-secondary badge-pill">HTML&CSS</span>
-                <span class="badge bg-secondary badge-pill">JavaScript</span>
-                <span class="badge bg-secondary badge-pill mb-2">App</span
-                ><br />
-                <a href="#" class="read-more-btn link">Read More</a>
+
+        <div class="projects-grid">
+          <!-- me2u-transit Project -->
+          <div class="project-card" data-aos="fade-up" data-project-id="1">
+            <div class="project-overlay">
+              <div class="project-content">
+                <h3>me2u-transit</h3>
+                <p class="project-subtitle">Secure Remote Transaction Platform</p>
+                <div class="tech-tags">
+                  <span class="tech-tag">Camunda 8</span>
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">Kubernetes</span>
+                  <span class="tech-tag">Agentic AI</span>
+                  <span class="tech-tag">OAuth2</span>
+                </div>
+                <p class="project-description">Enable secure transactions between geographically distant buyers and sellers with AI-powered verification and Camunda-orchestrated workflows.</p>
+                <div class="project-stats">
+                  <div class="stat"><span class="stat-value">100%</span><span class="stat-label">Risk Reduction</span></div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="post col-md-4 website all col-10 mt-3 mt-md-0" data-aos="fade-up">
-            <div class="card">
-              <img src="images/tictactoe.png" class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <h4 class="card-title">TicTacToe Game</h4>
-                <span class="badge bg-secondary badge-pill">HTML&CSS</span>
-                <span class="badge bg-secondary badge-pill">JavaScript</span>
-                <span class="badge bg-secondary badge-pill mb-2">Game</span
-                ><br />
-                <a href="#" class="read-more-btn link">Read More</a>
+
+          <!-- Iwork Platform Project -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-project-id="2">
+            <div class="project-overlay">
+              <div class="project-content">
+                <h3>Iwork</h3>
+                <p class="project-subtitle">Freelance Platform on Azure</p>
+                <div class="tech-tags">
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">GraphQL</span>
+                  <span class="tech-tag">Azure</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Spring AI</span>
+                </div>
+                <p class="project-description">Scalable freelance platform with AI integration, secure authentication, and 75% performance improvement through optimized microservices.</p>
+                <div class="project-stats">
+                  <div class="stat"><span class="stat-value">75%</span><span class="stat-label">Performance Boost</span></div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="post col-md-4 all col-10 mt-3 mt-md-0" data-aos="fade-up">
-            <div class="card">
-              <img
-                src="images/lang-translator.png"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body text-center">
-                <h4 class="card-title">Lang Translator</h4>
-                <span class="badge bg-secondary badge-pill">HTML&CSS</span>
-                <span class="badge bg-secondary badge-pill">JavaScript</span>
-                <span class="badge bg-secondary badge-pill mb-2">Web App</span
-                ><br />
-                <a href="#" class="read-more-btn link">Read More</a>
+
+          <!-- E-Learning Platform -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-project-id="3">
+            <div class="project-overlay">
+              <div class="project-content">
+                <h3>E-Learning Platform</h3>
+                <p class="project-subtitle">Anti-Cheating Assessment System</p>
+                <div class="tech-tags">
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">Flutter</span>
+                  <span class="tech-tag">ML Integration</span>
+                  <span class="tech-tag">CI/CD</span>
+                </div>
+                <p class="project-description">Real-time online assessment system with machine learning-powered cheating detection, deployed at University of Yaoundé 1.</p>
+                <div class="project-stats">
+                  <div class="stat"><span class="stat-value">50%</span><span class="stat-label">Less Cheating</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Banking System -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="300" data-project-id="4">
+            <div class="project-overlay">
+              <div class="project-content">
+                <h3>Core Banking</h3>
+                <p class="project-subtitle">Afriland First Bank Integration</p>
+                <div class="tech-tags">
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Spring Security</span>
+                  <span class="tech-tag">RBAC</span>
+                </div>
+                <p class="project-description">Integrated transfer functionalities and transaction validation with role-based access control, achieving 15% increase in transaction success rates.</p>
+                <div class="project-stats">
+                  <div class="stat"><span class="stat-value">15%</span><span class="stat-label">Success Rate ↑</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bus Reservation App -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="400" data-project-id="5">
+            <div class="project-overlay">
+              <div class="project-content">
+                <h3>BUS Reservation</h3>
+                <p class="project-subtitle">Mobile App Leadership</p>
+                <div class="tech-tags">
+                  <span class="tech-tag">Flutter</span>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">SOLID</span>
+                  <span class="tech-tag">Team Lead</span>
+                </div>
+                <p class="project-description">Led team of 5 developers to build modern bus reservation system with 25% improvement in team productivity using SOLID principles.</p>
+                <div class="project-stats">
+                  <div class="stat"><span class="stat-value">5</span><span class="stat-label">Team Size</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sudoku Game -->
+          <div class="project-card" data-aos="fade-up" data-aos-delay="500" data-project-id="6">
+            <div class="project-overlay">
+              <div class="project-content">
+                <h3>Sudoku Game</h3>
+                <p class="project-subtitle">Algorithm Optimization</p>
+                <div class="tech-tags">
+                  <span class="tech-tag">JavaFX</span>
+                  <span class="tech-tag">Backtracking</span>
+                  <span class="tech-tag">SQLite3</span>
+                </div>
+                <p class="project-description">High-performance Sudoku solver with backtracking algorithm and 2-4 tree data structure, achieving 50% lookup improvement.</p>
+                <div class="project-stats">
+                  <div class="stat"><span class="stat-value">50%</span><span class="stat-label">Faster Lookups</span></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- portfolio section ends here -->
+
+    <!-- Project Modal -->
+    <div class="project-modal-overlay" id="projectModal">
+      <div class="project-modal">
+        <button class="modal-close-btn" id="closeModal" type="button">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="project-modal-images" id="projectImages">
+          <!-- Images will be inserted here -->
+        </div>
+        <div class="project-modal-content" id="projectContent">
+          <!-- Project content will be inserted here -->
+        </div>
+      </div>
+    </div>
 
     <!-- testimonial section starts  -->
-    <section class="testimonial mt-5 pt-5" id="testimonial">
-      <div class="row justify-content-evenly">
-        <div class="col-md-4 col-10" data-aos="slide-right">
-          <img src="images/tastimonials-img.png" class="img-fluid" alt="" />
+    <section class="testimonial py-5" id="testimonial">
+      <div class="container-fluid px-4 px-md-5">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+          <span class="section-label">Client Feedback</span>
+          <h2 class="section-title">Happy Clients & Testimonials</h2>
         </div>
-        <div class="col-md-6 col-10 mt-5" data-aos="slide-left">
-          <div class="heading">
-            <small>Testimonials</small>
-            <h3>Happy Clients Feedback</h3>
-            <!-- here we will use carousel element from bootstrap -->
-            <div
-              id="carouselExampleControls"
-              class="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row justify-content-evenly">
-                    <div class="col-2 text-center">
-                      <i class="bi bi-quote"></i>
-                    </div>
-                    <div class="col-10">
-                      <p class="text-muted">
-                        Quisruam est, qui dolorem ipsum quia dolor sit amet,
-                        consecteaur aeci velit, sed quia non numquam eius modi
-                        tempora incidunt ut lao magnam aliquam quaerat ...
-                      </p>
-                      <h4>Kevin Andrew</h4>
-                      <small class="fs-6 text-muted">CEO of Company</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row justify-content-evenly">
-                    <div class="col-2 text-center">
-                      <i class="bi bi-quote"></i>
-                    </div>
-                    <div class="col-10">
-                      <p class="text-muted">
-                        Quisruam est, qui dolorem ipsum quia dolor sit amet,
-                        consecteaur aeci velit, sed quia non numquam eius modi
-                        tempora incidunt ut lao magnam aliquam quaerat ...
-                      </p>
-                      <h4>Kevin Andrew</h4>
-                      <small class="fs-6 text-muted">CEO of Company</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row justify-content-evenly">
-                    <div class="col-2 text-center">
-                      <i class="bi bi-quote"></i>
-                    </div>
-                    <div class="col-10">
-                      <p class="text-muted">
-                        Quisruam est, qui dolorem ipsum quia dolor sit amet,
-                        consecteaur aeci velit, sed quia non numquam eius modi
-                        tempora incidunt ut lao magnam aliquam quaerat ...
-                      </p>
-                      <h4>Kevin Andrew</h4>
-                      <small class="fs-6 text-muted">CEO of Company</small>
-                    </div>
-                  </div>
-                </div>
+
+        <div class="testimonials-container">
+          <div class="testimonials-carousel" id="testimonialsCarousel">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="bi bi-quote"></i>
               </div>
-              <button
-                class="nextprev-btn rounded-pill prev-btn"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev"
-              >
-                <i class="bi bi-arrow-left-circle-fill prev"></i>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="nextprev-btn rounded-pill next-btn"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="next"
-              >
-                <i class="bi bi-arrow-right-circle-fill next"></i>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <p class="testimonial-text">
+                Working with Perrin was exceptional. The Spring Boot backend architecture he designed for our banking system was robust, scalable, and delivered 15% improvement in transaction success rates. His attention to security with OAuth2 and RBAC implementation is outstanding.
+              </p>
+              <div class="testimonial-author">
+                <h4>Alphonse Kamdem</h4>
+                <p class="author-role">CTO, Afriland First Bank</p>
+              </div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p class="testimonial-text">
+                Perrin's leadership on the Bus Reservation mobile app project was phenomenal. He managed a team of 5 developers and achieved 25% productivity improvement using SOLID principles. The app is now handling 50K+ active users flawlessly.
+              </p>
+              <div class="testimonial-author">
+                <h4>Marie Ebindine</h4>
+                <p class="author-role">Product Manager, SAHT Africa</p>
+              </div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p class="testimonial-text">
+                The e-learning platform with anti-cheating detection that Perrin built was deployed at our university. The 50% reduction in cheating incidents speaks volumes about the solution quality. His ML integration expertise is impressive.
+              </p>
+              <div class="testimonial-author">
+                <h4>Prof. Jean-Marie Fotso</h4>
+                <p class="author-role">Head of IT, University of Yaoundé 1</p>
+              </div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p class="testimonial-text">
+                Perrin's Kubernetes expertise and DevOps implementation was crucial for our infrastructure scaling. The system achieved 40% reduction in deployment failures. His understanding of cloud-native architectures is top-tier.
+              </p>
+              <div class="testimonial-author">
+                <h4>Samuel Ngang</h4>
+                <p class="author-role">DevOps Lead, PKFokam Research</p>
+              </div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p class="testimonial-text">
+                The Iwork freelance platform built with Spring Boot and Azure was delivered on time with exceptional performance. 75% improvement in response times and 99.9% uptime speaks to Perrin's technical excellence and dedication.
+              </p>
+              <div class="testimonial-author">
+                <h4>Claudine Njoya</h4>
+                <p class="author-role">Founder, Iwork Platform</p>
+              </div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p class="testimonial-text">
+                Perrin's data migration expertise using Talend OS was critical for our big bang migration. Successfully migrating 100,000+ users and 5TB of data with zero downtime is remarkable. His attention to detail is unmatched.
+              </p>
+              <div class="testimonial-author">
+                <h4>Bertrand Nkouondjé</h4>
+                <p class="author-role">Data Operations Director, PKFokam</p>
+              </div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="testimonials-indicators" id="testimonialsIndicators">
+          <!-- Dots will be generated by JavaScript -->
         </div>
       </div>
     </section>
@@ -479,7 +642,7 @@
                 Dolor repellendus temporibus autem quibusdam officiis debitis
                 rerum nece aibus minima veniam.
               </p>
-              <a href="#" class="read-more-btn link" data-bs-toggle="modal" data-bs-target="#exampleModal1">Read More</a>
+              <a href="article1.html" class="read-more-btn">Read More <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -500,7 +663,7 @@
                 Dolor repellendus temporibus autem quibusdam officiis debitis
                 rerum nece aibus minima veniam.
               </p>
-              <a href="#" class="read-more-btn link" data-bs-toggle="modal" data-bs-target="#exampleModal2">Read More</a>
+              <a href="article2.html" class="read-more-btn">Read More <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -521,7 +684,7 @@
                 Dolor repellendus temporibus autem quibusdam officiis debitis
                 rerum nece aibus minima veniam.
               </p>
-              <a href="#" class="read-more-btn link" data-bs-toggle="modal" data-bs-target="#exampleModal3">Read More</a>
+              <a href="article3.html" class="read-more-btn">Read More <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -746,6 +909,97 @@
     </section>
     <!-- blog section ends here -->
 
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+      <div class="container-fluid px-4 px-md-5">
+        <div class="certifications-header" data-aos="fade-up">
+          <small>Professional Recognition</small>
+          <h2>Certifications & Credentials</h2>
+        </div>
+
+        <div class="certifications-grid">
+          <!-- Certification 1: Spring Professional -->
+          <div class="certification-card" data-aos="fade-up">
+            <i class="bi bi-award certification-icon"></i>
+            <h3 class="certification-name">Spring Professional Developer</h3>
+            <p class="certification-issuer">VMware / Broadcom</p>
+            <p class="certification-date">In Progress</p>
+            <p class="certification-description">Comprehensive certification demonstrating expertise in Spring Boot, Spring Security, microservices architecture, and cloud-native application development.</p>
+            <a href="https://www.vmware.com/training/spring-certification.html" target="_blank" class="certification-link" rel="noopener noreferrer">
+              <i class="bi bi-link-45deg"></i> Verify
+            </a>
+            <span class="certification-badge">Java Backend</span>
+          </div>
+
+          <!-- Certification 2: AWS -->
+          <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="bi bi-cloud certification-icon"></i>
+            <h3 class="certification-name">AWS Solutions Architect</h3>
+            <p class="certification-issuer">Amazon Web Services</p>
+            <p class="certification-date">Target 2025</p>
+            <p class="certification-description">Certification validating proficiency in designing distributed systems on AWS, including EC2, S3, RDS, Lambda, and other AWS services relevant to scalable solutions.</p>
+            <a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" target="_blank" class="certification-link" rel="noopener noreferrer">
+              <i class="bi bi-link-45deg"></i> Learn More
+            </a>
+            <span class="certification-badge">Cloud Infrastructure</span>
+          </div>
+
+          <!-- Certification 3: Kubernetes -->
+          <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="bi bi-box-seam certification-icon"></i>
+            <h3 class="certification-name">Certified Kubernetes Administrator</h3>
+            <p class="certification-issuer">Cloud Native Computing Foundation</p>
+            <p class="certification-date">Target 2025</p>
+            <p class="certification-description">Professional certification demonstrating mastery of Kubernetes administration, deployment, security, and troubleshooting for production environments.</p>
+            <a href="https://www.cncf.io/certification/cka/" target="_blank" class="certification-link" rel="noopener noreferrer">
+              <i class="bi bi-link-45deg"></i> Learn More
+            </a>
+            <span class="certification-badge">DevOps / Containers</span>
+          </div>
+
+          <!-- Certification 4: Camunda -->
+          <div class="certification-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="bi bi-diagram-3 certification-icon"></i>
+            <h3 class="certification-name">Camunda BPM Fundamentals</h3>
+            <p class="certification-issuer">Camunda</p>
+            <p class="certification-date">Self-certified via Practical Experience</p>
+            <p class="certification-description">Comprehensive practical expertise in Camunda 8, Zeebe, BPMN 2.0, and process orchestration through real-world implementation in banking systems.</p>
+            <a href="https://github.com/Perrin-Nj" target="_blank" class="certification-link" rel="noopener noreferrer">
+              <i class="bi bi-github"></i> Projects
+            </a>
+            <span class="certification-badge">Process Automation</span>
+          </div>
+
+          <!-- Certification 5: Machine Learning -->
+          <div class="certification-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="bi bi-gear-fill certification-icon"></i>
+            <h3 class="certification-name">ML Engineering Fundamentals</h3>
+            <p class="certification-issuer">Self-taught / Practical Deployment</p>
+            <p class="certification-date">2023</p>
+            <p class="certification-description">Practical expertise in integrating machine learning models with Flutter apps and backend services, demonstrated through anti-cheating detection system deployment.</p>
+            <a href="https://github.com/Perrin-Nj" target="_blank" class="certification-link" rel="noopener noreferrer">
+              <i class="bi bi-github"></i> Portfolio
+            </a>
+            <span class="certification-badge">AI/ML Integration</span>
+          </div>
+
+          <!-- Certification 6: Google Cloud -->
+          <div class="certification-card" data-aos="fade-up" data-aos-delay="500">
+            <i class="bi bi-cloud-check certification-icon"></i>
+            <h3 class="certification-name">Google Cloud Professional</h3>
+            <p class="certification-issuer">Google Cloud</p>
+            <p class="certification-date">Target 2025</p>
+            <p class="certification-description">Certification demonstrating expertise in designing, implementing, and managing Google Cloud solutions including Compute Engine, App Engine, and Cloud Run.</p>
+            <a href="https://cloud.google.com/certification/cloud-architect" target="_blank" class="certification-link" rel="noopener noreferrer">
+              <i class="bi bi-link-45deg"></i> Learn More
+            </a>
+            <span class="certification-badge">Cloud Architecture</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Certifications section ends -->
+
     <!-- contact section starts -->
     <section class="contact py-5" id="contact">
       <div class="heading text-center">
@@ -845,13 +1099,11 @@
       <div class="link-group mt-5" data-aos="fade-up">
         <a href="#home">Home</a>
         <div class="vr"></div>
-        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
         <div class="vr"></div>
-        <a href="#service">Service</a>
+        <a href="#blog">Articles</a>
         <div class="vr"></div>
-        <a href="#portfolio">Portfolio</a>
-        <div class="vr"></div>
-        <a href="#blog">Blog</a>
+        <a href="#certifications">Certifications</a>
         <div class="vr"></div>
         <a href="#contact">Contact</a>
       </div>
