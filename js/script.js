@@ -27,23 +27,34 @@ function throttle(func, limit) {
 document.addEventListener('DOMContentLoaded', function() {
   // Detect if device is mobile
   const isMobile = window.innerWidth <= 768;
+  const isVerySmall = window.innerWidth <= 480;
 
-  AOS.init({
-    duration: isMobile ? 600 : 800,
-    offset: isMobile ? 40 : 80,
-    once: false,
-    mirror: true,
-    easing: 'ease-out-cubic',
-    disable: 'phone', // Disable on very small screens if needed
-    startEvent: 'load',
-    throttleDelay: 99,
-    delay: 0
-  });
+  // Disable AOS on very small devices for better performance
+  if (isVerySmall) {
+    AOS.init({
+      disable: true
+    });
+  } else {
+    AOS.init({
+      duration: isMobile ? 400 : 600,
+      offset: isMobile ? 30 : 60,
+      once: true, // Only animate once for better performance
+      mirror: false, // Disable mirror for better performance
+      easing: 'ease-out',
+      startEvent: 'DOMContentLoaded',
+      throttleDelay: 100,
+      delay: 0,
+      useClassNames: false,
+      disableMutationObserver: true // Better performance
+    });
+  }
 
   // Force initial animation trigger for visible elements
-  setTimeout(() => {
-    AOS.refresh();
-  }, 100);
+  if (!isVerySmall) {
+    setTimeout(() => {
+      AOS.refresh();
+    }, 100);
+  }
 
   // Initialize all features
   setupNavbarAnimations();
@@ -51,8 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
   setupBackToTopButton();
   setupSkillAnimations();
   setupSmoothScrolling();
-  setupMouseFollower();
-  setupParallaxEffect();
+
+  // Only enable mouse follower and parallax on desktop
+  if (!isMobile) {
+    setupMouseFollower();
+    setupParallaxEffect();
+  }
 });
 
 // ============================================
@@ -135,10 +150,13 @@ function animateSkillProgress(element) {
 
   if (!skill) return;
 
+  // Detect mobile for faster, simpler animation
+  const isMobile = window.innerWidth <= 768;
+
   let currentValue = 0;
   const targetValue = skill.endValue;
-  const speed = 30;
-  const step = Math.ceil(targetValue / 50);
+  const speed = isMobile ? 20 : 30; // Faster on mobile
+  const step = isMobile ? Math.ceil(targetValue / 20) : Math.ceil(targetValue / 50); // Fewer steps on mobile
 
   const interval = setInterval(() => {
     currentValue += step;
@@ -150,6 +168,8 @@ function animateSkillProgress(element) {
     const percentageDegrees = (currentValue * 3.6);
     const progressDisplay = element.querySelector('.progress-value');
 
+    // Use CSS variable for better performance
+    element.style.setProperty('--progress-deg', `${percentageDegrees}deg`);
     element.style.background = `conic-gradient(var(--accent-purple) ${percentageDegrees}deg, rgba(111, 52, 254, 0.2) 0deg)`;
 
     if (progressDisplay) {
@@ -325,17 +345,22 @@ function setupTextAnimations() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-  const projectCards = document.querySelectorAll('.project-card');
+  // Disable hover effects on mobile/touch devices for better performance
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-15px) scale(1.02)';
-    });
+  if (!isTouchDevice) {
+    const projectCards = document.querySelectorAll('.project-card');
 
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) scale(1)';
+    projectCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+      });
+
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
     });
-  });
+  }
 });
 
 // ============================================
@@ -343,11 +368,16 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-  const expertiseCards = document.querySelectorAll('.expertise-card');
+  const isMobile = window.innerWidth <= 768;
 
-  expertiseCards.forEach((card, index) => {
-    card.style.animation = `slideInUp 0.6s ease-out ${index * 0.1}s backwards`;
-  });
+  // Disable staggered animations on mobile for faster load
+  if (!isMobile) {
+    const expertiseCards = document.querySelectorAll('.expertise-card');
+
+    expertiseCards.forEach((card, index) => {
+      card.style.animation = `slideInUp 0.4s ease-out ${index * 0.05}s backwards`;
+    });
+  }
 });
 
 // ============================================
@@ -824,6 +854,7 @@ function setupTestimonialsCarousel() {
 
   const cards = carousel.querySelectorAll('.testimonial-card');
   const cardCount = cards.length;
+  const isMobile = window.innerWidth <= 768;
 
   // Create indicator dots
   for (let i = 0; i < cardCount; i++) {
@@ -838,6 +869,7 @@ function setupTestimonialsCarousel() {
 
   let scrollPosition = 0;
   let scrollTimeout;
+  let rafId;
 
   function updateIndicator() {
     const dots = document.querySelectorAll('.testimonial-dot');
@@ -855,6 +887,9 @@ function setupTestimonialsCarousel() {
   function pauseScroll() {
     carousel.style.animationPlayState = 'paused';
     clearTimeout(scrollTimeout);
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
   }
 
   function resumeScroll() {
@@ -873,10 +908,96 @@ function setupTestimonialsCarousel() {
   carousel.addEventListener('mouseenter', pauseScroll);
   carousel.addEventListener('mouseleave', resumeScroll);
 
-  // Update indicator on animation frame
-  function animationFrame() {
-    updateIndicator();
-    requestAnimationFrame(animationFrame);
+  // Optimize animation frame updates - only update every 100ms on mobile
+  let lastUpdate = 0;
+  const updateInterval = isMobile ? 200 : 100;
+
+  function animationFrame(timestamp) {
+    if (timestamp - lastUpdate >= updateInterval) {
+      updateIndicator();
+      lastUpdate = timestamp;
+    }
+    rafId = requestAnimationFrame(animationFrame);
   }
-  animationFrame();
+
+  // Only start animation frame if carousel is visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        rafId = requestAnimationFrame(animationFrame);
+      } else {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+      }
+    });
+  });
+
+  observer.observe(carousel);
 }
+
+// ============================================
+// CONTACT FORM SUBMISSION (Web3Forms)
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const formMessage = document.getElementById('formMessage');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Disable submit button
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending...';
+
+      // Get form data
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Success message
+          formMessage.style.display = 'block';
+          formMessage.style.color = '#00d084';
+          formMessage.style.padding = '12px';
+          formMessage.style.borderRadius = '8px';
+          formMessage.style.background = 'rgba(0, 208, 132, 0.1)';
+          formMessage.style.border = '1px solid rgba(0, 208, 132, 0.3)';
+          formMessage.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+
+          // Reset form
+          contactForm.reset();
+
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            formMessage.style.display = 'none';
+          }, 5000);
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        // Error message
+        formMessage.style.display = 'block';
+        formMessage.style.color = '#ea4335';
+        formMessage.style.padding = '12px';
+        formMessage.style.borderRadius = '8px';
+        formMessage.style.background = 'rgba(234, 67, 53, 0.1)';
+        formMessage.style.border = '1px solid rgba(234, 67, 53, 0.3)';
+        formMessage.innerHTML = '<i class="bi bi-exclamation-circle-fill me-2"></i>Oops! Something went wrong. Please try again or email me directly at njietche.wandji@gmail.com';
+      } finally {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+      }
+    });
+  }
+});
